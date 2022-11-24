@@ -85,3 +85,12 @@ $(function () {
 
 
 });
+$("#hour-9").children(".description").val(localStorage.getItem("hour-9"));
+$("#hour-10").children(".description").val(localStorage.getItem("hour-10"));
+$("#hour-11").children(".description").val(localStorage.getItem("hour-11"));
+$("#hour-12").children(".description").val(localStorage.getItem("hour-12"));
+$("#hour-1").children(".description").val(localStorage.getItem("hour-1"));
+$("#hour-2").children(".description").val(localStorage.getItem("hour-2"));
+$("#hour-3").children(".description").val(localStorage.getItem("hour-3"));
+$("#hour-4").children(".description").val(localStorage.getItem("hour-4"));
+$("#hour-5").children(".description").val(localStorage.getItem("hour-5"));
