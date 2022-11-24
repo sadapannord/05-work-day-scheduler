@@ -3,7 +3,7 @@
 // in the html.
 var saveBtnArr = $('button')
 var today = dayjs();
-var time = dayjs().format('hh:mm:ss');
+var hour = dayjs().hour();
 
 var timeBlock = $('.time-block')
 
@@ -26,23 +26,53 @@ $(function () {
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
-  // function? How can DOM traversal be used to get the "hour-x" id of the
+  // function? How can DOM traversal be used to get the "x" id of the
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
 
   console.log(saveBtnArr)
   console.log(timeBlock)
-  console.log(time)
+  console.log(hour)
+  
+  function initialTimeBlock(){
+    var blockId /*= timeBlock.attr("id");*/
+    for (i=0; i<= timeBlock.length;i++) {
+      blockID=timeBlock[i].attr("id");
+    }
+    console.log(blockId);
+    if (blockId == hour) {
+      $(timeBlock).className="future";/*css("class", "present");change to remove class past set present*/
+
+    }
+    else if (blockID <= hour) {
+      $(timeBlock).css("class","past")
+    }
+    else if (blockID >= hour) {
+      $(timeBlock).css("class","future")
+    }
+  }
+
+
+
+
+
+
   function timeUpdater() {
-    var timeString = $('#currentDay').text(today.format('MMM D, YYYY'));
-    console.log(typeof timeString, timeString)
+    //var timeString = $('#currentDay').text(today.format('MMM D, YYYY'));
+    //console.log(typeof timeString, timeString)
     setTimeout(() => {
       console.log("60 seconds have passed");
       var blockId = timeBlock.attr("id")
       console.log(blockId)
-      if (blockId === timeString) {
-        $(timeBlock).css("background-color", "grey");//change to remove class past set present
+      if (blockId == hour /*timeString*/) {
+        $(timeBlock).className="present";/*css("class", "present");change to remove class past set present*/
 
+      }
+      else if (blockID <= hour/*timeString*/) {
+        $(timeBlock).css("class","past")
+      }
+      else if (blockID >= hour/*timeString*/) {
+        $(timeBlock).css("class","future")
       }
     }, 60000);
 
@@ -73,6 +103,7 @@ $(function () {
 
   timeUpdater()
   handleSave()
+  initialTimeBlock()
 
   $(".saveBtn").on("click", function () {
     var text = $(this).siblings(".description").val();
@@ -85,12 +116,12 @@ $(function () {
 
 
 });
-$("#hour-9").children(".description").val(localStorage.getItem("hour-9"));
-$("#hour-10").children(".description").val(localStorage.getItem("hour-10"));
-$("#hour-11").children(".description").val(localStorage.getItem("hour-11"));
-$("#hour-12").children(".description").val(localStorage.getItem("hour-12"));
-$("#hour-1").children(".description").val(localStorage.getItem("hour-1"));
-$("#hour-2").children(".description").val(localStorage.getItem("hour-2"));
-$("#hour-3").children(".description").val(localStorage.getItem("hour-3"));
-$("#hour-4").children(".description").val(localStorage.getItem("hour-4"));
-$("#hour-5").children(".description").val(localStorage.getItem("hour-5"));
+$("#9").children(".description").val(localStorage.getItem("9"));
+$("#10").children(".description").val(localStorage.getItem("10"));
+$("#11").children(".description").val(localStorage.getItem("11"));
+$("#12").children(".description").val(localStorage.getItem("12"));
+$("#13").children(".description").val(localStorage.getItem("13"));
+$("#14").children(".description").val(localStorage.getItem("14"));
+$("#15").children(".description").val(localStorage.getItem("15"));
+$("#16").children(".description").val(localStorage.getItem("16"));
+$("#17").children(".description").val(localStorage.getItem("17"));
