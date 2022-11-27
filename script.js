@@ -5,7 +5,8 @@ var saveBtnArr = $('button')
 var today = dayjs();
 var hour = dayjs().hour();
 
-var timeBlock = $('.time-block')
+var timeBlock = document.querySelectorAll('.time-block')
+// var hourBlocks = timeBlock.map (s=>s.id)
 var hourBlock9= $("#9")
 var hourBlock10= $("#10")
 var hourBlock11= $("#11")
@@ -15,8 +16,8 @@ var hourBlock14= $("#14")
 var hourBlock15= $("#15")
 var hourBlock16= $("#16")
 var hourBlock17= $("#17")
- console.log(hourBlock10)
- console.log(typeof hourBlock10)
+console.log(hourBlock10)
+console.log(typeof hourBlock10)
 
 // $(document).ready(function() {
 //   $('#currentDay').text(today.format('MMM D, YYYY'));
@@ -25,34 +26,20 @@ var hourBlock17= $("#17")
 //   //create if statement that if 'hour class is == set to present class
 
 
-
-//   saveBtn= document.addEventListener('click',function(){
-//     localStorage.setItem('savedEvent', today)
-//   })
-
-
 // });
 $(function () {
-  // TODO: Add a listener for click events on the save button. This code should
-  // use the id in the containing time-block as a key to save the user input in
-  // local storage. HINT: What does `this` reference in the click listener
-  // function? How can DOM traversal be used to get the "x" id of the
-  // time-block containing the button that was clicked? How might the id be
-  // useful when saving the description in local storage?
-
   console.log(saveBtnArr)
   console.log(timeBlock)
   console.log(hour)
-  console.log(timeBlock)
   console.log(timeBlock[1])
   
   function initialTimeBlock(){
-    var blockId /*= timeBlock.attr("id");*/
-    for (i=0; i<= timeBlock.length; i++) {
-      // blockID = timeBlock[i].attr("id");//trying to get ids of timeBlocks
-    }
-    console.log(blockId);
-    if (blockId == hour) {
+    // var blockId /*= timeBlock.attr("id");*/
+    // for (i=0; i<= timeBlock.length; i++) {
+    //   blockID = timeBlock[i]
+    // }
+    // console.log(blockId);
+    if (hourBlock10 == hour) {
       $(timeBlock).className="future";/*css("class", "present");change to remove class past set present*/
 
     }
@@ -70,12 +57,10 @@ $(function () {
 
 
   function timeUpdater() {
-    //var timeString = $('#currentDay').text(today.format('MMM D, YYYY'));
-    //console.log(typeof timeString, timeString)
     setTimeout(() => {
       console.log("60 seconds have passed");
-      var blockId = timeBlock.attr("id")
-      console.log(blockId)
+      // var blockId = timeBlock.attr("id")
+      // console.log(blockId)
       if (blockId == hour /*timeString*/) {
         $(timeBlock).className="present";/*css("class", "present");change to remove class past set present*/
 
@@ -108,7 +93,7 @@ $(function () {
 
   timeUpdater()
   handleSave()
-  initialTimeBlock()
+  // initialTimeBlock()
 
   $(".saveBtn").on("click", function () {
     var text = $(this).siblings(".description").val();
