@@ -44,15 +44,30 @@ $(function () {
     //   blockID = timeBlock[i]
     // }
     // console.log(blockId);
-    if (timeBlock == currentHour) {
-      $(timeBlock).addClass("present");/*css("class", "present");change to remove class past set present*/
+
+    for (i=0; i< timeBlock.length; i++) {
+      var blockID = parseInt(timeBlock[i].id)
+      if (blockID == currentHour) {
+        $(timeBlock).addClass("present");/*css("class", "present");change to remove class past set present*/
+  
+      }
+      else if (blockID <= currentHour) {
+        $(timeBlock).addClass("past")
+      }
+    console.log(blockID)
 
     }
-    else if (timeBlock <= currentHour) {
-      $(timeBlock).addClass("past")
-    }
+  }
 
-    }
+    // if (timeBlock == currentHour) {
+    //   $(timeBlock).addClass("present");/*css("class", "present");change to remove class past set present*/
+
+    // }
+    // else if (timeBlock <= currentHour) {
+    //   $(timeBlock).addClass("past")
+    // }
+
+    // }
   
 
 
@@ -134,7 +149,7 @@ $(function () {
   });
 
 
-});
+
 $("#9").children(".description").val(localStorage.getItem("9"));
 $("#10").children(".description").val(localStorage.getItem("10"));
 $("#11").children(".description").val(localStorage.getItem("11"));
@@ -144,3 +159,4 @@ $("#14").children(".description").val(localStorage.getItem("14"));
 $("#15").children(".description").val(localStorage.getItem("15"));
 $("#16").children(".description").val(localStorage.getItem("16"));
 $("#17").children(".description").val(localStorage.getItem("17"));
+});
