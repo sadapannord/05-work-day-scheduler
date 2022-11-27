@@ -6,8 +6,12 @@ var today = dayjs();
 var hour = dayjs().hour();
 
 var timeBlock = document.querySelectorAll('.time-block')
-// var hourBlocks = timeBlock.map (s=>s.id)
-// var hourBlock9= $("#9")
+console.log(timeBlock)
+
+
+var hourBlock9= $("#9");
+
+
 // var hourBlock10= $("#10")
 // var hourBlock11= $("#11")
 // var hourBlock12= $("#12")
@@ -18,7 +22,7 @@ var timeBlock = document.querySelectorAll('.time-block')
 // var hourBlock17= $("#17")
 // console.log(hourBlock10)
 // console.log(typeof hourBlock10)
-var currentHour= moment().hour;
+var currentHour= moment().hour();
 
 // $(document).ready(function() {
 //   $('#currentDay').text(today.format('MMM D, YYYY'));
@@ -44,12 +48,37 @@ $(function () {
       $(timeBlock).addClass("present");/*css("class", "present");change to remove class past set present*/
 
     }
-    else if (blockID <= hour) {
+    else if (timeBlock <= currentHour) {
       $(timeBlock).addClass("past")
     }
 
     }
+  
+
+
+ function hourUpdater() {
+    // get current number of hours
+    var currentHour = moment().hours();
+
+    // loop over time blocks
+    $('.time-block').each(function() {
+      
+      // check if we've moved past this time
+      if (hourBlock9 < currentHour) {
+        $(this).addClass('past');
+      } else if (hourBlock9 === currentHour) {
+        $(this).removeClass('past');
+        $(this).addClass('present');
+      } else {
+        $(this).removeClass('past');
+        $(this).removeClass('present');
+        $(this).addClass('future');
+      }
+    });
+
   }
+
+  hourUpdater();
 
 
 
@@ -93,7 +122,7 @@ $(function () {
 
   timeUpdater()
   handleSave()
-  // initialTimeBlock()
+  initialTimeBlock()
 
   $(".saveBtn").on("click", function () {
     var text = $(this).siblings(".description").val();
