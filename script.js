@@ -2,7 +2,7 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 var saveBtnArr = $('button')
-var today = dayjs().format("MMMM D, YYYY");
+var today = dayjs().format("dddd, MMMM D");
 var currentDay = document.querySelector("#currentDay")
 console.log(today)
 
@@ -57,14 +57,6 @@ $(function () {
 
 
   }
-
-
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-  //
 
   function handleSave() {
     var timeBlockText = localStorage.getItem("timeBlockText")
