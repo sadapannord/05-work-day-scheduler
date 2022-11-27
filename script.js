@@ -6,7 +6,17 @@ var today = dayjs();
 var hour = dayjs().hour();
 
 var timeBlock = $('.time-block')
-
+var hourBlock9= $("#9")
+var hourBlock10= $("#10")
+var hourBlock11= $("#11")
+var hourBlock12= $("#12")
+var hourBlock13= $("#13")
+var hourBlock14= $("#14")
+var hourBlock15= $("#15")
+var hourBlock16= $("#16")
+var hourBlock17= $("#17")
+ console.log(hourBlock10)
+ console.log(typeof hourBlock10)
 
 // $(document).ready(function() {
 //   $('#currentDay').text(today.format('MMM D, YYYY'));
@@ -33,11 +43,13 @@ $(function () {
   console.log(saveBtnArr)
   console.log(timeBlock)
   console.log(hour)
+  console.log(timeBlock)
+  console.log(timeBlock[1])
   
   function initialTimeBlock(){
     var blockId /*= timeBlock.attr("id");*/
-    for (i=0; i<= timeBlock.length;i++) {
-      blockID=timeBlock[i].attr("id");
+    for (i=0; i<= timeBlock.length; i++) {
+      // blockID = timeBlock[i].attr("id");//trying to get ids of timeBlocks
     }
     console.log(blockId);
     if (blockId == hour) {
@@ -93,13 +105,6 @@ $(function () {
 
   }
 
-
-
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-  //
-  // TODO: Add code to display the current date in the header of the page.
 
   timeUpdater()
   handleSave()
