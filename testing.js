@@ -27,3 +27,31 @@ if (blockID == currentHour) {
  else if (blockID <= currentHour) {
    $(timeBlock).addClass("past")
  }
+
+
+ if (blockId == hour /*timeString*/) {
+   $(timeBlock).className="present";/*css("class", "present");change to remove class past set present*/
+
+ }
+ else if (blockID <= hour/*timeString*/) {
+   $(timeBlock).css("class","past")
+ }
+ else if (blockID >= hour/*timeString*/) {
+   $(timeBlock).css("class","future")
+ }
+
+
+
+ function hourUpdater() {
+   // get current number of hours
+   var currentHour = moment().hours();
+
+   // loop over time blocks
+   $('.time-block').each(function() {
+     
+     // check if we've moved past this time
+   });
+
+ }
+
+ hourUpdater();

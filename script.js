@@ -2,8 +2,10 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 var saveBtnArr = $('button')
-var today = dayjs();
-// var hour = dayjs().hour();
+var today = dayjs().format("MMMM D, YYYY");
+var currentDay = document.querySelector("#currentDay")
+console.log(today)
+
 
 var timeBlock = document.querySelectorAll('.time-block')
 console.log(timeBlock)
@@ -15,7 +17,10 @@ console.log(timeBlock[1])
 
 $(function () {
 
-  
+  var showToday = document.createElement('p');
+  currentDay.appendChild(showToday);
+  showToday.innerHTML="Today is " + today;
+
   function initialTimeBlock(){
     for (i=0; i< timeBlock.length; i++) {
       var blockID = parseInt(timeBlock[i].id)
@@ -23,72 +28,31 @@ $(function () {
         $(timeBlock[i]).addClass('past');
         $(timeBlock[i]).removeClass('present');
         $(timeBlock[i]).removeClass('future');
-        console.log("what")
-        console.log(blockID.className)
+        console.log("past")
       } else if (blockID === currentHour) {
         $(timeBlock[i]).removeClass('past');
         $(timeBlock[i]).removeClass('future');
         $(timeBlock[i]).addClass('present');
-        console.log("maybe")
+        console.log("present")
       } else {
         $(timeBlock[i]).removeClass('past');
         $(timeBlock[i]).removeClass('present');
         $(timeBlock[i]).addClass('future');
-        console.log("not a chance")
+        console.log("future")
       }
 
-    console.log(blockID)
-    console.log(typeof blockID)
+    // console.log(blockID)
+    // console.log(typeof blockID)
 
     }
   }
 
-    // if (timeBlock == currentHour) {
-    //   $(timeBlock).addClass("present");/*css("class", "present");change to remove class past set present*/
-
-    // }
-    // else if (timeBlock <= currentHour) {
-    //   $(timeBlock).addClass("past")
-    // }
-
-    // }
-  
-
-
-//  function hourUpdater() {
-//     // get current number of hours
-//     var currentHour = moment().hours();
-
-//     // loop over time blocks
-//     $('.time-block').each(function() {
-      
-//       // check if we've moved past this time
-//     });
-
-  // }
-
-  // hourUpdater();
-
-
-
-
-
-
   function timeUpdater() {
-    setTimeout(() => {
+    setInterval(() => {
       console.log("60 seconds have passed");
-      // var blockId = timeBlock.attr("id")
-      // console.log(blockId)
-      if (blockId == hour /*timeString*/) {
-        $(timeBlock).className="present";/*css("class", "present");change to remove class past set present*/
+      var currentHour= moment().hour();
+      console.log(currentHour)
 
-      }
-      else if (blockID <= hour/*timeString*/) {
-        $(timeBlock).css("class","past")
-      }
-      else if (blockID >= hour/*timeString*/) {
-        $(timeBlock).css("class","future")
-      }
     }, 60000);
 
 
